@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
+import { parseISO, formatDistance } from "date-fns";
+
 
 const Avatar = styled.img`
   height: 100%;
@@ -76,7 +78,7 @@ const RepoDetails = data => {
                     <Tag>Stars: {stars}</Tag>
                     <Tag>Issues: {issues}</Tag>
                     <div>
-                        Submitted {created_at}
+                        Submitted {formatDistance(parseISO(created_at), new Date())} ago by{" "}
                         <strong>
                             <Link href={owner_url} target="_blank">
                                 {owner}
