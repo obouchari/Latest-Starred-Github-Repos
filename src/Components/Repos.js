@@ -1,10 +1,12 @@
 import React from "react";
+import RepoDetails from "./RepoDetails";
+
 
 const Repos = ({ repos }) => {
     return repos.map(data => (
-        <ul key={data.id}>
-            <li>{data.name}</li>
-        </ul>
+        <div key={data.id}>
+            <RepoDetails {...data} />
+        </div>
     ));
 };
 
