@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchRepos, filterRepos } from "./Utilities/fetchRepos";
+import Repos from "./Components/Repos";
+
 
 function useFetch(page) {
   const [loading, setLoading] = useState(true);
@@ -32,6 +34,7 @@ function App() {
   const { loading, error, repos } = useFetch(page);
   return (
       <div>
+          <Repos repos={repos} />
       </div>
   );
 }
