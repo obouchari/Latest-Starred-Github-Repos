@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { fetchRepos, filterRepos } from "./Utilities/fetchRepos";
 import Repos from "./Components/Repos";
-
+import {debounce} from "lodash-es";
 
 function useFetch(page) {
   const [loading, setLoading] = useState(true);
@@ -38,10 +38,21 @@ const Container = styled.div`
 function App() {
   const [page, setPage] = useState(1);
   const { loading, error, repos } = useFetch(page);
+
+  window.onscroll = debounce(() => {
+    if (loading || error) return;
+
+    const scrollPos = window.innerHeight + document.documentElement.scrollTop;
+    const height = document.documentElement.offsetHeight;
+    if (scrollPos === height) {
+      setPage(page => page + 1);
+    }
+  }, 200);
+
   return (
-      <Container>
-          <Repos repos={repos} />
-      </Container>
+    <Container>
+      <Repos repos={repos} />
+    </Container>
   );
 }
 
