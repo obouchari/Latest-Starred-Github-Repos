@@ -24,7 +24,7 @@ Note: We're wrapping the event handler function in _debounce_ (a module from lod
 **Without debounce**
 ![alt text](without_rebounce.png)
 **With debounce**
-
+![alt text](with_rebounce.png)
 
 _fetchRepos.js_ utility also contains a _filterRepos_ function that will extract only relevant data to be displayed.
 
