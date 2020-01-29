@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { fetchRepos, filterRepos } from "./Utilities/fetchRepos";
 import Repos from "./Components/Repos";
 import Loader from "./Components/Loader";
-import {debounce} from "lodash-es";
+import Alert from "./Components/Alert";
+import { debounce } from "lodash-es";
 
 function useFetch(page) {
   const [loading, setLoading] = useState(true);
@@ -13,15 +14,15 @@ function useFetch(page) {
   useEffect(() => {
     setLoading(true);
     fetchRepos(page)
-        .then(data => setRepos(repos => repos.concat(filterRepos(data))))
-        .catch(error => {
-          if (error instanceof window.Response) {
-            setError(`${error.status}: ${error.statusText}`);
-          } else {
-            setError(error.toString());
-          }
-        })
-        .finally(() => setLoading(false));
+      .then(data => setRepos(repos => repos.concat(filterRepos(data))))
+      .catch(error => {
+        if (error instanceof window.Response) {
+          setError(`${error.status}: ${error.statusText}`);
+        } else {
+          setError(error.toString());
+        }
+      })
+      .finally(() => setLoading(false));
   }, [page]);
 
   return {
@@ -54,6 +55,7 @@ function App() {
     <Container>
       <Repos repos={repos} />
       {loading && <Loader />}
+      {error && <Alert message={error} type="error" />}
     </Container>
   );
 }

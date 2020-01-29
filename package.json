@@ -10,7 +10,9 @@
     "react-scripts": "1.0.0",
     "styled-components": "5.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "1.19.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

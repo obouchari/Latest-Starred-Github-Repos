@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { parseISO, formatDistance } from "date-fns";
 
-
 const Avatar = styled.img`
   height: 100%;
   width: 64px;
@@ -53,42 +52,42 @@ const Link = styled.a`
 `;
 
 const RepoDetails = data => {
-    const {
-        avatar,
-        description,
-        name,
-        stars,
-        issues,
-        owner,
-        created_at,
-        owner_url,
-        repo_url
-    } = data;
-    return (
-        <Fragment>
-            <Avatar src={avatar} alt={description} />
-            <Details>
-                <Title>
-                    <Link href={repo_url} target="_blank">
-                        {name}
-                    </Link>
-                </Title>
-                <Description>{description || "No description available"}.</Description>
-                <Stats>
-                    <Tag>Stars: {stars}</Tag>
-                    <Tag>Issues: {issues}</Tag>
-                    <div>
-                        Submitted {formatDistance(parseISO(created_at), new Date())} ago by{" "}
-                        <strong>
-                            <Link href={owner_url} target="_blank">
-                                {owner}
-                            </Link>
-                        </strong>
-                    </div>
-                </Stats>
-            </Details>
-        </Fragment>
-    );
+  const {
+    avatar,
+    description,
+    name,
+    stars,
+    issues,
+    owner,
+    created_at,
+    owner_url,
+    repo_url
+  } = data;
+  return (
+    <Fragment>
+      <Avatar src={avatar} alt={description} />
+      <Details>
+        <Title>
+          <Link href={repo_url} target="_blank">
+            {name}
+          </Link>
+        </Title>
+        <Description>{description || "No description available"}.</Description>
+        <Stats>
+          <Tag>Stars: {stars}</Tag>
+          <Tag>Issues: {issues}</Tag>
+          <div>
+            Submitted {formatDistance(parseISO(created_at), new Date())} ago by{" "}
+            <strong>
+              <Link href={owner_url} target="_blank">
+                {owner}
+              </Link>
+            </strong>
+          </div>
+        </Stats>
+      </Details>
+    </Fragment>
+  );
 };
 
 export default RepoDetails;

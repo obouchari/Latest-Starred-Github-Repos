@@ -13,11 +13,11 @@ const Repo = styled.div`
 `;
 
 const Repos = ({ repos }) => {
-    return repos.map(data => (
-        <Repo key={data.id}>
-            <RepoDetails {...data} />
-        </Repo>
-    ));
+  return repos.map(data => (
+    <Repo key={data.id}>
+      <RepoDetails {...data} />
+    </Repo>
+  ));
 };
 
 export default Repos;
