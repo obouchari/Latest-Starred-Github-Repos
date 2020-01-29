@@ -22,7 +22,7 @@ We are implementing an infinite scroll by only loading pages when the user scrol
 Note: We're wrapping the event handler function in _debounce_ (a module from lodash library) to prevent the event handler from executing multiple times in fraction of a second.
 
 **Without debounce**
-
+![alt text](without_rebounce.png)
 **With debounce**
 
 
