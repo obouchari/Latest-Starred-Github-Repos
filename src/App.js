@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { fetchRepos, filterRepos } from "./Utilities/fetchRepos";
 import Repos from "./Components/Repos";
+import Loader from "./Components/Loader";
 import {debounce} from "lodash-es";
 
 function useFetch(page) {
@@ -52,6 +53,7 @@ function App() {
   return (
     <Container>
       <Repos repos={repos} />
+      {loading && <Loader />}
     </Container>
   );
 }
